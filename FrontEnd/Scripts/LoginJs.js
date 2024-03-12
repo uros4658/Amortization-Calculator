@@ -13,7 +13,7 @@ loginButton.addEventListener('click', async () => {
     };
 
     // Send the POST request to the login API
-    const response = await fetch('https://your-api-url/api/Authorization/login', {
+    const response = await fetch('https://localhost:7172/api/Authorization/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -25,6 +25,7 @@ loginButton.addEventListener('click', async () => {
     if (response.ok) {
         const data = await response.json();
         console.log('Token:', data);
+        window.location.href = '../Pages/AmortizatioPage.html';
     } else {
         console.error('Error:', response.status, response.statusText);
     }

@@ -78,17 +78,12 @@ namespace AmortizationCalc.Services
             payment.Principal = PrincipalPayment(payment, loan);
             payment.AmountLeft = payment.AmountLeft - PrincipalPayment(payment, loan);
             payment.Interest = InterestPayment(loan);
-            payment.LoanMonth = payment.LoanMonth.AddMonths(1);
+            payment.LoanMonth = payment.LoanMonth.AddMonths(12 / loan.PaymentsPerYear);
             _payment = payment;
 
             await _connection.ExecuteAsync("INSERT INTO payment (amountleft, principal, interest, loanmonth) " +
                 "VALUES (@amountleft, @principal, @interest, @loanmonth)", payment);
             return payment;
-        }
-
-        public Task<Payment> RegisterOneMonth(Loan loan)
-        {
-            throw new NotImplementedException();
         }
     }
 }
