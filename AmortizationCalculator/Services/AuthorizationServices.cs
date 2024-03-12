@@ -26,6 +26,7 @@ namespace AuthorizationServices
             };
 
             var connection = new MySqlConnection(_config.GetConnectionString("DefaultConnection"));
+            await connection.OpenAsync();
             await connection.ExecuteAsync("INSERT INTO user (username, passwordHash) VALUES (@Username, @PasswordHash)", user);
 
             return user;

@@ -111,3 +111,4 @@ C:\ProjekatProg\AmortizationCalculator\AmortizationCalculator\obj\Debug\net6.0\r
 C:\ProjekatProg\AmortizationCalculator\AmortizationCalculator\obj\Debug\net6.0\AmortizationCalculator.pdb
 C:\ProjekatProg\AmortizationCalculator\AmortizationCalculator\obj\Debug\net6.0\AmortizationCalculator.genruntimeconfig.cache
 C:\ProjekatProg\AmortizationCalculator\AmortizationCalculator\obj\Debug\net6.0\ref\AmortizationCalculator.dll
+C:\ProjekatProg\AmortizationCalculator\AmortizationCalculator\obj\Debug\net6.0\AmortizationCalculator.sourcelink.json

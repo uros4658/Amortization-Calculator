@@ -64,6 +64,7 @@ namespace AmortizationCalc.Services
             return _payment.MonthlyPayment - PrincipalPayment(_payment, loan);
         }
 
+        // Makes _payment have all the neccessary paramaters for the start
         public Payment MakePayment(Loan loan)
         {
             _payment.AmountLeft = loan.LoanAmount - loan.DownPayment;
@@ -74,9 +75,9 @@ namespace AmortizationCalc.Services
 
         public async Task<Payment> RegisterOneMonth(Loan loan, Payment payment)
         {
-            payment.AmountLeft -= PrincipalPayment(payment, loan);
-            payment.Interest = InterestPayment(loan);
             payment.Principal = PrincipalPayment(payment, loan);
+            payment.AmountLeft = payment.AmountLeft - PrincipalPayment(payment, loan);
+            payment.Interest = InterestPayment(loan);
             payment.LoanMonth = payment.LoanMonth.AddMonths(1);
             _payment = payment;
 
