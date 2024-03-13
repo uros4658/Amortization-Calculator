@@ -9,7 +9,8 @@ namespace AmortizationCalc.Interfaces
         double TotalInterestPayed(Loan loan);
         double PrincipalPayment(Payment payment, Loan loan);
         double InterestPayment(Loan loan);
-        Payment MakePayment(Loan loan);
+        Payment MakePayment(Loan loan, int ID);
         Task<Payment> RegisterOneMonth(Loan loan, Payment payment);
+        Task<int> AddLoan(Loan loan);
     }
 }

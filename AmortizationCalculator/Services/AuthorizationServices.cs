@@ -10,10 +10,12 @@ namespace AuthorizationServices
     public class UserService : IUserService
     {
         private readonly IConfiguration _config;
+        private MySqlConnection _connection;
 
         public UserService(IConfiguration config)
         {
             _config = config;
+            _connection = new MySqlConnection(_config.GetConnectionString("DefaultConnection"));
         }
 
         public async Task<User> Register(UserDto request)
@@ -26,32 +28,25 @@ namespace AuthorizationServices
                 PasswordHash = passwordHash
             };
 
-            var connection = new MySqlConnection(_config.GetConnectionString("DefaultConnection"));
-            await connection.OpenAsync();
-            await connection.ExecuteAsync("INSERT INTO user (username, passwordHash) VALUES (@Username, @PasswordHash)", user);
+            await _connection.ExecuteAsync("INSERT INTO user (username, passwordHash) VALUES (@Username, @PasswordHash)", user);
 
             return user;
         }
 
         public async Task<User> Login(UserDto request)
         {
-            var connection = new MySqlConnection(_config.GetConnectionString("DefaultConnection"));
-            var user = await connection.QueryFirstOrDefaultAsync<User>("SELECT * FROM user WHERE username = @Username", new { request.Username });
-
-            
+            var user = await _connection.QueryFirstOrDefaultAsync<User>("SELECT * FROM user WHERE username = @Username", new { request.Username });
             return user;    
         }
 
         public async Task<IEnumerable<User>> GetAllUsers()
         {
-            using var connection = new MySqlConnection(_config.GetConnectionString("DefaultConnection"));
-            return await connection.QueryAsync<User>("SELECT * FROM user");
+            return await _connection.QueryAsync<User>("SELECT * FROM user");
         }
 
         public async Task<int> DeleteAllUsers()
         {
-            using var connection = new MySqlConnection(_config.GetConnectionString("DefaultConnection"));
-            return await connection.ExecuteAsync("DELETE FROM user");
+            return await _connection.ExecuteAsync("DELETE FROM user");
         }
 
     }

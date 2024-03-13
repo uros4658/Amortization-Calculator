@@ -19,12 +19,14 @@ namespace AmortizationCalc.Controllers
             _calculationServices = calculationServices;
         }
 
+
         [HttpPost("add-amortization-plan")]
         public async Task<ActionResult<Payment>> AddAllPayments(Loan loan)
         {
             try
             {
-                var payment = _calculationServices.MakePayment(loan);
+                int loanID = await _calculationServices.AddLoan(loan);
+                var payment = _calculationServices.MakePayment(loan, loanID);
                 while (payment.LoanMonth < loan.EndDate)
                 {
                     payment = await _calculationServices.RegisterOneMonth(loan, payment);

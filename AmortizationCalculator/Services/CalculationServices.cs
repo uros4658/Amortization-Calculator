@@ -65,25 +65,37 @@ namespace AmortizationCalc.Services
         }
 
         // Makes _payment have all the neccessary paramaters for the start
-        public Payment MakePayment(Loan loan)
+        public Payment MakePayment(Loan loan, int ID)
         {
             _payment.AmountLeft = loan.LoanAmount - loan.DownPayment;
             _payment.LoanMonth = loan.StartDate;
             _payment.MonthlyPayment = CalculateMonthlyCost(loan);
+            _payment.LoanID = ID;
             return _payment;
         }
 
         public async Task<Payment> RegisterOneMonth(Loan loan, Payment payment)
         {
+            string sql = "INSERT INTO payment (amountleft, monthlypayment, principal, interest, loanmonth, loanID) " +
+                "VALUES (@amountleft, @monthlypayment, @principal, @interest, @loanmonth, @loanID)";
             payment.Principal = PrincipalPayment(payment, loan);
             payment.AmountLeft = payment.AmountLeft - PrincipalPayment(payment, loan);
             payment.Interest = InterestPayment(loan);
             payment.LoanMonth = payment.LoanMonth.AddMonths(12 / loan.PaymentsPerYear);
             _payment = payment;
 
-            await _connection.ExecuteAsync("INSERT INTO payment (amountleft, principal, interest, loanmonth) " +
-                "VALUES (@amountleft, @principal, @interest, @loanmonth)", payment);
+            await _connection.ExecuteAsync(sql, payment);
             return payment;
         }
+        public async Task<int> AddLoan(Loan loan)
+        {
+            string sql = "INSERT INTO Loan (LoanAmount, StartDate, EndDate, InterestRate, DownPayment, PaymentsPerYear) " +
+                "VALUES (@LoanAmount, @StartDate, @EndDate, @InterestRate, @DownPayment, @PaymentsPerYear); " +
+                "SELECT LAST_INSERT_ID();";
+
+            int newId = await _connection.QuerySingleAsync<int>(sql, loan);
+            return newId;
+        }
+
     }
 }

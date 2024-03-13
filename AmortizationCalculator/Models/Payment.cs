@@ -6,4 +6,5 @@
     public double AmountLeft { get; set; }
     public double Principal { get; set; }
     public double Interest { get; set; }
+    public int LoanID { get; set; }
 }

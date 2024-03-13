@@ -1,6 +1,5 @@
 ﻿using AmortizationCalc.Interfaces;
 using AmortizationCalc.Models;
-using AuthorizationServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;

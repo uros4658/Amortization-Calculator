@@ -1,5 +1,7 @@
 using AmortizationCalc.Interfaces;
 using AmortizationCalc.Services;
+using AmortizationCalculator.Interfaces;
+using AmortizationCalculator.Services;
 using AuthorizationServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -60,6 +62,7 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICalculationServices, CalculationServices>();
+builder.Services.AddScoped<IPaymentService,PaymentServices>();
 
 
 var app = builder.Build();
