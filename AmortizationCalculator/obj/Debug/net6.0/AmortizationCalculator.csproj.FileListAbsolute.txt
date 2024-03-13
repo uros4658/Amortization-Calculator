@@ -112,3 +112,5 @@ C:\ProjekatProg\AmortizationCalculator\AmortizationCalculator\obj\Debug\net6.0\A
 C:\ProjekatProg\AmortizationCalculator\AmortizationCalculator\obj\Debug\net6.0\AmortizationCalculator.genruntimeconfig.cache
 C:\ProjekatProg\AmortizationCalculator\AmortizationCalculator\obj\Debug\net6.0\ref\AmortizationCalculator.dll
 C:\ProjekatProg\AmortizationCalculator\AmortizationCalculator\obj\Debug\net6.0\AmortizationCalculator.sourcelink.json
+C:\ProjekatProg\AmortizationCalculator\AmortizationCalculator\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\ProjekatProg\AmortizationCalculator\AmortizationCalculator\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll

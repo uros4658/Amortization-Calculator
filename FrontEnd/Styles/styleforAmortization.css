@@ -1,0 +1,101 @@
+* {
+    font-family: "Poppins";
+  }
+  
+  body {
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    overflow-y: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #dde5f4;
+    height: 100vh;
+  }
+  
+  .screen-1 {
+    background: #f1f7fe;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    box-shadow: 0 0 2em #e6e9f9;
+    gap: 2em;
+  }
+  
+  .screen-1 h1 {
+    margin-top: -3em;
+  }
+  
+  .screen-1 .loanAmount,
+  .screen-1 .startDate,
+  .screen-1 .endDate,
+  .screen-1 .interestRate,
+  .screen-1 .downPayment,
+  .screen-1 .paymentsPerYear {
+    background: white;
+    box-shadow: 0 0 2em #e6e9f9;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    border-radius: 20px;
+    color: #4d4d4d;
+    margin-top: -3em;
+  }
+  
+  .screen-1 .loanAmount input,
+  .screen-1 .startDate input,
+  .screen-1 .endDate input,
+  .screen-1 .interestRate input,
+  .screen-1 .downPayment input,
+  .screen-1 .paymentsPerYear input {
+    outline: none;
+    border: none;
+  }
+  
+  .screen-1 .loanAmount input::-moz-placeholder,
+  .screen-1 .startDate input::-moz-placeholder,
+  .screen-1 .endDate input::-moz-placeholder,
+  .screen-1 .interestRate input::-moz-placeholder,
+  .screen-1 .downPayment input::-moz-placeholder,
+  .screen-1 .paymentsPerYear input::-moz-placeholder {
+    color: black;
+    font-size: 0.9em;
+  }
+  
+  .screen-1 .loanAmount input:-ms-input-placeholder,
+  .screen-1 .startDate input:-ms-input-placeholder,
+  .screen-1 .endDate input:-ms-input-placeholder,
+  .screen-1 .interestRate input:-ms-input-placeholder,
+  .screen-1 .downPayment input:-ms-input-placeholder,
+  .screen-1 .paymentsPerYear input:-ms-input-placeholder {
+    color: black;
+    font-size: 0.9em;
+  }
+  
+  .screen-1 .loanAmount input::placeholder,
+  .screen-1 .startDate input::placeholder,
+  .screen-1 .endDate input::placeholder,
+  .screen-1 .interestRate input::placeholder,
+  .screen-1 .downPayment input::placeholder,
+  .screen-1 .paymentsPerYear input::placeholder {
+    color: black;
+    font-size: 0.9em;
+  }
+  
+  .screen-1 .calculate {
+    padding: 1em;
+    background: #3e4684;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  

@@ -6,6 +6,7 @@ namespace AmortizationCalc.Interfaces
     {
         string CreateToken(User user);
         RefreshToken GenerateRefreshToken();
+        void SetCookie(HttpResponse response, string token);
         void SetRefreshToken(User user, RefreshToken newRefreshToken);
     }
 }

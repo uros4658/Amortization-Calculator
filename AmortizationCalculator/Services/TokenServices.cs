@@ -56,5 +56,15 @@ namespace AuthorizationServices
             user.TokenCreated = newRefreshToken.Created;
             user.TokenExpires = newRefreshToken.Exipres;
         }
+
+        public void SetCookie(HttpResponse response, string refreshToken)
+        {
+            response.Cookies.Append("refreshToken", refreshToken, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.Strict
+            });
+        }
     }
 }

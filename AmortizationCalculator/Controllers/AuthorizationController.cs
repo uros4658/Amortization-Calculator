@@ -52,6 +52,8 @@ namespace AmortizationCalc.Controllers
 
             user = loggedInUser;
 
+            _tokenService.SetCookie(Response, refreshToken.Token);
+
             return Ok(token);
         }
 
@@ -81,6 +83,7 @@ namespace AmortizationCalc.Controllers
             string token = _tokenService.CreateToken(user);
             var newRefreshToken = _tokenService.GenerateRefreshToken();
             _tokenService.SetRefreshToken(user, newRefreshToken);
+            _tokenService.SetCookie(Response, newRefreshToken.Token);
 
             return Ok(token);
         }

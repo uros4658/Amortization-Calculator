@@ -23,9 +23,15 @@ loginButton.addEventListener('click', async () => {
 
     // Check if the request was successful
     if (response.ok) {
-        const data = await response.json();
+        let data;
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.indexOf("application/json") !== -1) {
+            data = await response.json();
+        } else {
+            data = await response.text();
+        }
         console.log('Token:', data);
-        window.location.href = '../Pages/AmortizatioPage.html';
+        window.location.href = '../Pages/AmortizationPage.html';
     } else {
         console.error('Error:', response.status, response.statusText);
     }

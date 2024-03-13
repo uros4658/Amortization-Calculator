@@ -20,7 +20,7 @@ namespace AmortizationCalc.Controllers
         }
 
         [HttpPost("add-amortization-plan")]
-        public async Task<ActionResult<Payment>> AddOnePayment(Loan loan)
+        public async Task<ActionResult<Payment>> AddAllPayments(Loan loan)
         {
             try
             {
