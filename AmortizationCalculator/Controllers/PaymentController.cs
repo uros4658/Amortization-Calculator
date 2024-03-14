@@ -50,14 +50,36 @@ namespace AmortizationCalculator.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
-        [HttpPost("Missed payment")]
-        public async Task<IActionResult> MissedPayment(Payment payment)
+
+        [HttpPost("Missed payment Extend Loan")]
+        public async Task<IActionResult> MissedPaymentExtendLoan(Payment payment)
         {
             try
             {
                 payment = await _paymentService.MissedPaymentRegister(payment);
                 await DeleteOtherPayments(payment.Id);
                 payment = await _paymentService.RegisterAdjustedPaymentInterestDouble(payment);
+                while (payment.AmountLeft > 0)
+                {
+                    payment = await _paymentService.RegisterAdjustedPayment(payment);
+                }
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception message
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpPost("Missed payment same length")]
+        public async Task<IActionResult> MissedPaymentSameLength(Payment payment)
+        {
+            try
+            {
+                payment = await _paymentService.MissedPaymentRegister(payment);
+                await DeleteOtherPayments(payment.Id);
+                payment.MonthlyPayment = await _paymentService.CalculateMonthlyCost(payment);
                 while (payment.AmountLeft > 0)
                 {
                     payment = await _paymentService.RegisterAdjustedPayment(payment);

@@ -97,6 +97,11 @@ namespace AmortizationCalc.Services
 
             payment = await AdjustPayment(payment, loan);
 
+            if (payment.AmountLeft + payment.Interest < payment.MonthlyPayment)
+            {
+                payment.MonthlyPayment = payment.AmountLeft + payment.Interest;
+            }
+
             await _connection.ExecuteAsync(sql, payment);
             return payment;
         }

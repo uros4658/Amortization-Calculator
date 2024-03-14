@@ -9,6 +9,7 @@ namespace AmortizationCalculator.Interfaces
         Task<Payment> RegisterAdjustedPayment(Payment payment);
         Task<Payment> MissedPaymentRegister(Payment payment);
         Task<Payment> RegisterAdjustedPaymentInterestDouble(Payment payment);
+        Task<double> CalculateMonthlyCost(Payment payment);
 
     }
 

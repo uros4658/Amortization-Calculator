@@ -62,7 +62,23 @@ namespace AmortizationCalculator.Services
 
             return payment;
         }
+        public async Task<double> CalculateMonthlyCost(Payment payment)
+        {
+            Loan loan = await RetrieveLoanFromPayment(payment);
 
+            if (loan.PaymentsPerYear == 0)
+            {
+                throw new ArgumentException("Payments per year cannot be zero.");
+            }
+
+            int principal = loan.LoanAmount - loan.DownPayment;
+            int lengthOfLoanYears = loan.EndDate.Year - loan.StartDate.Year;
+
+            double monthlyPayment = (principal * (loan.InterestRate / loan.PaymentsPerYear)) /
+                 (1 - Math.Pow(1 + loan.InterestRate / loan.PaymentsPerYear, -1 * loan.PaymentsPerYear * lengthOfLoanYears));
+
+            return monthlyPayment;
+        }
         public async Task<Payment> RegisterAdjustedPayment(Payment payment)
         {
             string sql = "INSERT INTO payment (amountleft, monthlypayment, principal, interest, loanmonth, loanID) " +
@@ -72,6 +88,11 @@ namespace AmortizationCalculator.Services
             payment = await AdjustPayment(payment);
 
             payment.LoanMonth = payment.LoanMonth.AddMonths(12 / loan.PaymentsPerYear);
+
+            if (payment.AmountLeft + payment.Interest < payment.MonthlyPayment)
+            {
+                payment.MonthlyPayment = payment.AmountLeft + payment.Interest;
+            }
 
             await _connection.ExecuteAsync(sql, payment);
             return payment;
@@ -93,8 +114,8 @@ namespace AmortizationCalculator.Services
 
         public async Task<Payment> MissedPaymentRegister(Payment payment)
         {
-            string sql = "INSERT INTO payment (amountleft, monthlypayment, principal, interest, loanmonth, loanID) " +
-                "VALUES (@amountleft, @monthlypayment, @principal, @interest, @loanmonth, @loanID)";
+            string sql = "UPDATE payment SET amountleft = @amountleft, monthlypayment = @monthlypayment, " +
+                "principal = @principal, interest = @interest, loanmonth = @loanmonth, loanID = @loanID WHERE paymentID = @ID";
 
             Loan loan = await RetrieveLoanFromPayment(payment);
             double prevMonthlyPayment = payment.MonthlyPayment;
@@ -110,6 +131,7 @@ namespace AmortizationCalculator.Services
 
             return payment;
         }
+
     }
 
 }
