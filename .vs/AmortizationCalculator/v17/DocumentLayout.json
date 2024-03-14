@@ -7,6 +7,22 @@
       "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\services\\calculationservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\services\\paymentservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\services\\paymentservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\interfaces\\ipaymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\interfaces\\ipaymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\controllers\\authorizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\controllers\\authorizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\controllers\\calculationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\controllers\\calculationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,40 +31,20 @@
       "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\interfaces\\icalculationservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\services\\authorizationservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\services\\authorizationservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\models\\loan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\models\\loan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\services\\paymentservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\services\\paymentservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\interfaces\\ipaymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\interfaces\\ipaymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\controllers\\authorizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\controllers\\authorizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\services\\authorizationservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\services\\authorizationservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\services\\tokenservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -57,10 +53,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|c:\\projekatprog\\amortizationcalculator\\amortizationcalculator\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{557460F5-1DFB-4E06-BD8B-2DEE86310EB6}|AmortizationCalculator\\AmortizationCalculator.csproj|solutionrelative:amortizationcalculator\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -70,121 +62,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 151,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CalculationServices.cs",
-              "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Services\\CalculationServices.cs",
-              "RelativeDocumentMoniker": "AmortizationCalculator\\Services\\CalculationServices.cs",
-              "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Services\\CalculationServices.cs",
-              "RelativeToolTip": "AmortizationCalculator\\Services\\CalculationServices.cs",
-              "ViewState": "AQIAADsAAAAAAAAAAAAswE8AAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T10:51:35.948Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "CalculationController.cs",
               "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Controllers\\CalculationController.cs",
               "RelativeDocumentMoniker": "AmortizationCalculator\\Controllers\\CalculationController.cs",
               "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Controllers\\CalculationController.cs",
               "RelativeToolTip": "AmortizationCalculator\\Controllers\\CalculationController.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAqwBwAAABGAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAqwB0AAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T10:56:30.665Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-12T10:56:30.665Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Loan.cs",
-              "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Models\\Loan.cs",
-              "RelativeDocumentMoniker": "AmortizationCalculator\\Models\\Loan.cs",
-              "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Models\\Loan.cs",
-              "RelativeToolTip": "AmortizationCalculator\\Models\\Loan.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-13T20:04:17.217Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IPaymentService.cs",
-              "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Interfaces\\IPaymentService.cs",
-              "RelativeDocumentMoniker": "AmortizationCalculator\\Interfaces\\IPaymentService.cs",
-              "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Interfaces\\IPaymentService.cs",
-              "RelativeToolTip": "AmortizationCalculator\\Interfaces\\IPaymentService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-13T10:57:36.896Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Payment.cs",
-              "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Models\\Payment.cs",
-              "RelativeDocumentMoniker": "AmortizationCalculator\\Models\\Payment.cs",
-              "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Models\\Payment.cs",
-              "RelativeToolTip": "AmortizationCalculator\\Models\\Payment.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAAVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-13T10:41:35.713Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AuthorizationServices.cs",
-              "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Services\\AuthorizationServices.cs",
-              "RelativeDocumentMoniker": "AmortizationCalculator\\Services\\AuthorizationServices.cs",
-              "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Services\\AuthorizationServices.cs",
-              "RelativeToolTip": "AmortizationCalculator\\Services\\AuthorizationServices.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAiwCUAAACTAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T10:49:28.372Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
               "Title": "AuthorizationController.cs",
               "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Controllers\\AuthorizationController.cs",
               "RelativeDocumentMoniker": "AmortizationCalculator\\Controllers\\AuthorizationController.cs",
               "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Controllers\\AuthorizationController.cs",
               "RelativeToolTip": "AmortizationCalculator\\Controllers\\AuthorizationController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA5AAAA",
+              "ViewState": "AQIAADIAAAAAAAAAAAAwwEgAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-12T10:47:20.243Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\appsettings.json",
-              "RelativeDocumentMoniker": "AmortizationCalculator\\appsettings.json",
-              "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\appsettings.json",
-              "RelativeToolTip": "AmortizationCalculator\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-03-12T12:11:49.711Z"
+              "DocumentIndex": 2,
+              "Title": "PaymentController.cs",
+              "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Controllers\\PaymentController.cs",
+              "RelativeDocumentMoniker": "AmortizationCalculator\\Controllers\\PaymentController.cs",
+              "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Controllers\\PaymentController.cs",
+              "RelativeToolTip": "AmortizationCalculator\\Controllers\\PaymentController.cs",
+              "ViewState": "AQIAADMAAAAAAAAAAAAAAD8AAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-13T10:52:27.94Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "web.config",
-              "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\web.config",
-              "RelativeDocumentMoniker": "AmortizationCalculator\\web.config",
-              "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\web.config",
-              "RelativeToolTip": "AmortizationCalculator\\web.config",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-03-12T12:11:44.141Z"
+              "DocumentIndex": 3,
+              "Title": "IPaymentService.cs",
+              "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Interfaces\\IPaymentService.cs",
+              "RelativeDocumentMoniker": "AmortizationCalculator\\Interfaces\\IPaymentService.cs",
+              "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Interfaces\\IPaymentService.cs",
+              "RelativeToolTip": "AmortizationCalculator\\Interfaces\\IPaymentService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-13T10:57:36.896Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PaymentServices.cs",
+              "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Services\\PaymentServices.cs",
+              "RelativeDocumentMoniker": "AmortizationCalculator\\Services\\PaymentServices.cs",
+              "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Services\\PaymentServices.cs",
+              "RelativeToolTip": "AmortizationCalculator\\Services\\PaymentServices.cs",
+              "ViewState": "AQIAAFEAAAAAAAAAAAAowA0AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-13T10:57:25.478Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -194,51 +136,74 @@
               "RelativeDocumentMoniker": "AmortizationCalculator\\Program.cs",
               "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Program.cs",
               "RelativeToolTip": "AmortizationCalculator\\Program.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAAAEAAAAA9AAAA",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAuwFQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-12T10:47:38.919Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "ICalculationServices.cs",
               "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Interfaces\\ICalculationServices.cs",
               "RelativeDocumentMoniker": "AmortizationCalculator\\Interfaces\\ICalculationServices.cs",
               "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Interfaces\\ICalculationServices.cs",
               "RelativeToolTip": "AmortizationCalculator\\Interfaces\\ICalculationServices.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAtAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T10:47:26.101Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-12T10:47:26.101Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PaymentServices.cs",
-              "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Services\\PaymentServices.cs",
-              "RelativeDocumentMoniker": "AmortizationCalculator\\Services\\PaymentServices.cs",
-              "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Services\\PaymentServices.cs",
-              "RelativeToolTip": "AmortizationCalculator\\Services\\PaymentServices.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAAAAAA",
+              "DocumentIndex": 7,
+              "Title": "Payment.cs",
+              "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Models\\Payment.cs",
+              "RelativeDocumentMoniker": "AmortizationCalculator\\Models\\Payment.cs",
+              "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Models\\Payment.cs",
+              "RelativeToolTip": "AmortizationCalculator\\Models\\Payment.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-13T10:57:25.478Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-13T10:41:35.713Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "PaymentController.cs",
-              "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Controllers\\PaymentController.cs",
-              "RelativeDocumentMoniker": "AmortizationCalculator\\Controllers\\PaymentController.cs",
-              "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Controllers\\PaymentController.cs",
-              "RelativeToolTip": "AmortizationCalculator\\Controllers\\PaymentController.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAADwvxsAAAAQAAAA",
+              "Title": "Loan.cs",
+              "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Models\\Loan.cs",
+              "RelativeDocumentMoniker": "AmortizationCalculator\\Models\\Loan.cs",
+              "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Models\\Loan.cs",
+              "RelativeToolTip": "AmortizationCalculator\\Models\\Loan.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-13T10:52:27.94Z"
+              "WhenOpened": "2024-03-13T20:04:17.217Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 0,
+              "Title": "CalculationServices.cs",
+              "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Services\\CalculationServices.cs",
+              "RelativeDocumentMoniker": "AmortizationCalculator\\Services\\CalculationServices.cs",
+              "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Services\\CalculationServices.cs",
+              "RelativeToolTip": "AmortizationCalculator\\Services\\CalculationServices.cs",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAUwEcAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-12T10:51:35.948Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AuthorizationServices.cs",
+              "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Services\\AuthorizationServices.cs",
+              "RelativeDocumentMoniker": "AmortizationCalculator\\Services\\AuthorizationServices.cs",
+              "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Services\\AuthorizationServices.cs",
+              "RelativeToolTip": "AmortizationCalculator\\Services\\AuthorizationServices.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAowCUAAACTAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-12T10:49:28.372Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "TokenServices.cs",
               "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Services\\TokenServices.cs",
               "RelativeDocumentMoniker": "AmortizationCalculator\\Services\\TokenServices.cs",
@@ -250,7 +215,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 12,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "AmortizationCalculator\\Properties\\launchSettings.json",

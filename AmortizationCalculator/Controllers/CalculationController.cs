@@ -27,7 +27,7 @@ namespace AmortizationCalc.Controllers
             {
                 int loanID = await _calculationServices.AddLoan(loan);
                 var payment = _calculationServices.MakePayment(loan, loanID);
-                while (payment.LoanMonth < loan.EndDate)
+                while (payment.AmountLeft > 0)
                 {
                     payment = await _calculationServices.RegisterOneMonth(loan, payment);
                 }

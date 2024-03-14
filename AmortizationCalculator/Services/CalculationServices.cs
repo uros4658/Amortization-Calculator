@@ -73,16 +73,29 @@ namespace AmortizationCalc.Services
             _payment.LoanID = ID;
             return _payment;
         }
+        public async Task<Payment> AdjustPayment(Payment payment, Loan loan)
+        {
 
+            payment.Interest = InterestPayment(loan);
+            payment.Principal = PrincipalPayment(payment, loan);
+            payment.AmountLeft = payment.AmountLeft - payment.Principal;
+            payment.LoanMonth = payment.LoanMonth.AddMonths(12 / loan.PaymentsPerYear);
+            _payment = payment;
+
+            if (payment.AmountLeft < 0)
+            {
+                payment.Principal += payment.AmountLeft;
+                payment.AmountLeft = 0;
+            }
+
+            return payment;
+        }
         public async Task<Payment> RegisterOneMonth(Loan loan, Payment payment)
         {
             string sql = "INSERT INTO payment (amountleft, monthlypayment, principal, interest, loanmonth, loanID) " +
                 "VALUES (@amountleft, @monthlypayment, @principal, @interest, @loanmonth, @loanID)";
-            payment.Principal = PrincipalPayment(payment, loan);
-            payment.AmountLeft = payment.AmountLeft - PrincipalPayment(payment, loan);
-            payment.Interest = InterestPayment(loan);
-            payment.LoanMonth = payment.LoanMonth.AddMonths(12 / loan.PaymentsPerYear);
-            _payment = payment;
+
+            payment = await AdjustPayment(payment, loan);
 
             await _connection.ExecuteAsync(sql, payment);
             return payment;
