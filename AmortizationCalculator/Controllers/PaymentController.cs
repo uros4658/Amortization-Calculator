@@ -2,6 +2,7 @@
 using AmortizationCalc.Models;
 using AmortizationCalc.Services;
 using AmortizationCalculator.Interfaces;
+using AmortizationCalculator.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -103,6 +104,35 @@ namespace AmortizationCalculator.Controllers
                 while (payment.AmountLeft > 0)
                 {
                     payment = await _paymentService.RegisterAdjustedPayment(payment);
+                }
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception message
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+        [HttpPost("Different payment each n months")]
+        public async Task<IActionResult> DifferenpaymentEachNMonths(PaymentEachN paymentEachN)
+        {
+            try
+            {
+                Payment paymentUsual = paymentEachN.paymentUsual;
+                Payment paymentEach = paymentEachN.paymentNMonths;
+                int n = paymentEachN.nMonths;
+                int i = 0;
+                while (paymentUsual.AmountLeft > 0)
+                {
+                    if(i%n == 0)
+                    {
+                        paymentEach = await _paymentService.RegisterAdjustedPayment(paymentEach);
+                        paymentUsual.AmountLeft = paymentUsual.AmountLeft - paymentEach.Principal;
+                    }
+                    else
+                    {
+                        paymentUsual = await _paymentService.RegisterAdjustedPayment(paymentUsual);
+                    }
                 }
                 return Ok();
             }
