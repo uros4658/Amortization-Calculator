@@ -2,7 +2,6 @@
 using AmortizationCalc.Models;
 using Dapper;
 using MySql.Data.MySqlClient;
-using System.Data.SqlClient;
 
 namespace AmortizationCalc.Services
 {
@@ -55,6 +54,20 @@ namespace AmortizationCalc.Services
             double principalPayment = payment.MonthlyPayment - interest;
 
             return principalPayment;
+        }
+
+        // Returns the real interest paid
+        public double RealInterestRatePaid(Loan loan, double inflationRate)
+        {
+            double nominalInterestPaid = TotalInterestPayed(loan);
+
+            int lengthOfLoanYears = loan.EndDate.Year - loan.StartDate.Year;
+
+            double totalInflation = Math.Pow(1 + inflationRate, lengthOfLoanYears) - 1;
+
+            double realInterestPaid = nominalInterestPaid - (loan.LoanAmount * totalInflation);
+
+            return realInterestPaid;
         }
 
 

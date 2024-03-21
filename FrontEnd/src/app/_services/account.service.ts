@@ -26,15 +26,15 @@ export class AccountService {
 
     login(username: string, password: string) {
         return this.http.post<any>('https://localhost:7172/api/Authorization/login', { username, password })
-            .pipe(map(user => {
-                // parse user details and jwt token from response
-                if (user && user.token) {
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('user', JSON.stringify(user));
-                    this.userSubject.next(user);
-                }
-                return user;
-            }));
+        .pipe(map(user => {
+            // parse user details and jwt token from response
+            if (user && user.token) {
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                localStorage.setItem('user', JSON.stringify(user));
+                this.userSubject.next(user);
+            }
+            return user;
+        }));        
     }
     
     
