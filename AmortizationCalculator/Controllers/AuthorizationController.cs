@@ -30,6 +30,22 @@ namespace AmortizationCalc.Controllers
             return Ok(user);
         }
 
+        [HttpGet("get-all-users")]
+        public async Task<ActionResult<IEnumerable<User>>> GetAll()
+        {
+            try
+            {
+                var users = await _userService.GetAllUsers();
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception here
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+
         [HttpPost("login")]
         public async Task<ActionResult<User>> Login(UserDto request)
         {
@@ -53,7 +69,7 @@ namespace AmortizationCalc.Controllers
 
             _tokenService.SetCookie(Response, refreshToken.Token);
 
-            return Ok(token);
+            return Ok(new { token = token });
         }
 
 

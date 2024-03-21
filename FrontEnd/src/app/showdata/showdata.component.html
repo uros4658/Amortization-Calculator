@@ -1,5 +1,36 @@
-<div *ngFor="let item of data">
-    <p>{{ item.name }}</p>
-    <p>{{ item.description }}</p>
-  </div>
-  
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Loan Month</th>
+      <th>Monthly Payment</th>
+      <th>Amount Left</th>
+      <th>Principal</th>
+      <th>Interest</th>
+      <th>Loan ID</th>
+      <th>Change Payment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data | paginate: { itemsPerPage: 10, currentPage: p }">
+      <td>{{ item.id }}</td>
+      <td>{{ item.loanMonth }}</td>
+      <td>{{ item.monthlyPayment }}</td>
+      <td>{{ item.amountLeft }}</td>
+      <td>{{ item.principal }}</td>
+      <td>{{ item.interest }}</td>
+      <td>{{ item.loanID }}</td>
+      <td>
+        <button (click)="item.showForm = !item.showForm">Change</button>
+        <form *ngIf="item.showForm" (ngSubmit)="changePayment(item)">
+          <input type="number" [(ngModel)]="item.id" name="LoanID" placeholder="Loan ID">
+          <input type="date" [(ngModel)]="item.newLoanMonth" name="newLoanMonth" placeholder="Loan Month">
+          <input type="number" [(ngModel)]="item.newPaymentAmount" name="newPaymentAmount" placeholder="Payment Amount">
+          <button type="submit">Submit</button>
+        </form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

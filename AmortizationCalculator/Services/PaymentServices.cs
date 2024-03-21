@@ -1,5 +1,6 @@
 ﻿using AmortizationCalc.Models;
 using AmortizationCalculator.Interfaces;
+using AmortizationCalculator.Models;
 using Dapper;
 using MySql.Data.MySqlClient;
 
@@ -37,6 +38,10 @@ namespace AmortizationCalculator.Services
 
             await _connection.ExecuteAsync(sql, payment);
             return payment;
+        }
+        public async Task<IEnumerable<Payment>> GetAllPayemnts()
+        {
+            return await _connection.QueryAsync<Payment>("SELECT * FROM payment");
         }
         public async Task DeleteOtherPayments(int id)
         {
@@ -128,6 +133,25 @@ namespace AmortizationCalculator.Services
 
             await _connection.ExecuteAsync(sql, payment);
             payment.MonthlyPayment = prevMonthlyPayment;
+
+            return payment;
+        }
+        public async Task<Payment> CreatePaymentFromNewPayment(NewPayment newPayment)
+        {
+            string sql = "SELECT * FROM payment WHERE Id = @LoanID AND LoanMonth = @LoanMonth";
+            var parameters = new { Id = newPayment.Id, LoanMonth = newPayment.LoanMonth };
+            Payment payment = await _connection.QuerySingleOrDefaultAsync<Payment>(sql, parameters);
+
+            // If no matching record was found, create a new one
+            if (payment == null)
+            {
+                payment = new Payment();
+            }
+
+            // Update the payment with the new payment details
+            payment.Id = newPayment.Id;
+            payment.LoanMonth = newPayment.LoanMonth;
+            payment.AmountLeft = newPayment.AmountLeft;
 
             return payment;
         }

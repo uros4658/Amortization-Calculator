@@ -1,12 +1,8 @@
-﻿using AmortizationCalc.Interfaces;
-using AmortizationCalc.Models;
-using AmortizationCalc.Services;
+﻿using AmortizationCalc.Models;
 using AmortizationCalculator.Interfaces;
 using AmortizationCalculator.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace AmortizationCalculator.Controllers
 {
@@ -36,7 +32,23 @@ namespace AmortizationCalculator.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
-        [HttpPost("Change This Months Payment")]
+
+        [HttpGet("get-all-payments")]
+        public async Task<ActionResult<IEnumerable<User>>> GetAllPayments()
+        {
+            try
+            {
+                var users = await _paymentService.GetAllPayemnts();
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception here
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpPost("Change-This-Months-Payment")]
         public async Task<IActionResult> ChangeMonthlyPayment(Payment payment)
         {
 
@@ -52,7 +64,7 @@ namespace AmortizationCalculator.Controllers
             }
         }
 
-        [HttpPost("Missed payment Extend Loan")]
+        [HttpPost("Missed-payment-Extend-Loan")]
         public async Task<IActionResult> MissedPaymentExtendLoan(Payment payment)
         {
             try
@@ -73,7 +85,7 @@ namespace AmortizationCalculator.Controllers
             }
         }
 
-        [HttpPost("Missed payment same length")]
+        [HttpPost("Missed-payment-same-length")]
         public async Task<IActionResult> MissedPaymentSameLength(Payment payment)
         {
             try
@@ -94,11 +106,12 @@ namespace AmortizationCalculator.Controllers
             }
         }
 
-        [HttpPost("Change, Delete and make full payment plan with new monthly payment")]
-        public async Task<IActionResult> ChangeDeleteAndMake(Payment payment)
+        [HttpPost("Change-Delete-and-make-full-payment-new-monthly")]
+        public async Task<IActionResult> ChangeDeleteAndMake(NewPayment newPayment)
         {
             try
             {
+                Payment payment = await _paymentService.CreatePaymentFromNewPayment(newPayment);
                 await ChangeMonthlyPayment(payment);
                 await DeleteOtherPayments(payment.Id);
                 while (payment.AmountLeft > 0)

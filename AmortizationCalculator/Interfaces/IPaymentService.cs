@@ -1,4 +1,5 @@
 ﻿using AmortizationCalc.Models;
+using AmortizationCalculator.Models;
 
 namespace AmortizationCalculator.Interfaces
 {
@@ -10,7 +11,7 @@ namespace AmortizationCalculator.Interfaces
         Task<Payment> MissedPaymentRegister(Payment payment);
         Task<Payment> RegisterAdjustedPaymentInterestDouble(Payment payment);
         Task<double> CalculateMonthlyCost(Payment payment);
-
+        Task<IEnumerable<Payment>> GetAllPayemnts();
+        Task<Payment> CreatePaymentFromNewPayment(NewPayment newPayment);
     }
-
 }

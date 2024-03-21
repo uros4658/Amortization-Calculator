@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AmortizationCalculator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+df62fb78b4b482d82fbc4cf7a1ca2c7b3b507cf8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aa3d64de53c0f9bfab6912c9008106933ced97ef")]
 [assembly: System.Reflection.AssemblyProductAttribute("AmortizationCalculator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AmortizationCalculator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
