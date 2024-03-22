@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class ShowDataComponent implements OnInit {
   data: any;
   p: number = 1;
+  showForm: boolean = false;  
+  selectedItem = {id : 0, newLoanMonth: Date, newPaymentAmount: 0};
 
   constructor(private showDataService: ShowDataService) { }
 
@@ -18,8 +20,47 @@ export class ShowDataComponent implements OnInit {
     });
   }
 
-  changePayment(item: any) {
-    this.showDataService.changePayment(item.id, item.newLoanMonth, item.newPaymentAmount).subscribe(
+  changePayment(selectedItem: any) {
+    this.showDataService.changePayment(selectedItem.id, selectedItem.newLoanMonth, selectedItem.newPaymentAmount).subscribe(
+      response => {
+        console.log(response);
+        // Refresh the page or update the data
+        location.reload();
+      },
+      error => {
+        console.error(error);
+        // Handle error
+      }
+    );
+  }
+  changeOneMonthPayment(selectedItem: any) {
+    this.showDataService.changePayment(selectedItem.id, selectedItem.newLoanMonth, selectedItem.newPaymentAmount).subscribe(
+      response => {
+        console.log(response);
+        // Refresh the page or update the data
+        location.reload();
+      },
+      error => {
+        console.error(error);
+        // Handle error
+      }
+    );
+  }
+  missMonthsPaymentSameLength(selectedItem: any) {
+    this.showDataService.changePayment(selectedItem.id, selectedItem.newLoanMonth, selectedItem.newPaymentAmount).subscribe(
+      response => {
+        console.log(response);
+        // Refresh the page or update the data
+        location.reload();
+      },
+      error => {
+        console.error(error);
+        // Handle error
+      }
+    );
+  }
+  missMonthsPaymentExtendLength(selectedItem: any) {
+    this.showDataService.changePayment(selectedItem.id, selectedItem.newLoanMonth, selectedItem.newPaymentAmount).subscribe(
       response => {
         console.log(response);
         // Refresh the page or update the data

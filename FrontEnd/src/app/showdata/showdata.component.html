@@ -8,7 +8,6 @@
       <th>Principal</th>
       <th>Interest</th>
       <th>Loan ID</th>
-      <th>Change Payment</th>
     </tr>
   </thead>
   <tbody>
@@ -20,17 +19,41 @@
       <td>{{ item.principal }}</td>
       <td>{{ item.interest }}</td>
       <td>{{ item.loanID }}</td>
-      <td>
-        <button (click)="item.showForm = !item.showForm">Change</button>
-        <form *ngIf="item.showForm" (ngSubmit)="changePayment(item)">
-          <input type="number" [(ngModel)]="item.id" name="LoanID" placeholder="Loan ID">
-          <input type="date" [(ngModel)]="item.newLoanMonth" name="newLoanMonth" placeholder="Loan Month">
-          <input type="number" [(ngModel)]="item.newPaymentAmount" name="newPaymentAmount" placeholder="Payment Amount">
-          <button type="submit">Submit</button>
-        </form>
-      </td>
     </tr>
   </tbody>
 </table>
-
+<div style="display: flex; justify-content: center;">
+  <!-- Button outside the table -->
+  <button (click)="showForm = !showForm">Change Recurring Payment</button>
+  <form *ngIf="showForm" (ngSubmit)="changePayment(selectedItem)">
+    <input type="number" [(ngModel)]="selectedItem.id" name="LoanID" placeholder="Loan ID">
+    <input type="date" [(ngModel)]="selectedItem.newLoanMonth" name="newLoanMonth" placeholder="Loan Month">
+    <input type="number" [(ngModel)]="selectedItem.newPaymentAmount" name="newPaymentAmount" placeholder="Payment Amount">
+    <button type="submit">Submit</button>
+  </form>
+  <a>  ...  </a>
+  <button (click)="showForm = !showForm">Change One Month Payment</button>
+  <form *ngIf="showForm" (ngSubmit)="changeOneMonthPayment(selectedItem)">
+    <input type="number" [(ngModel)]="selectedItem.id" name="LoanID" placeholder="Loan ID">
+    <input type="date" [(ngModel)]="selectedItem.newLoanMonth" name="newLoanMonth" placeholder="Loan Month">
+    <input type="number" [(ngModel)]="selectedItem.newPaymentAmount" name="newPaymentAmount" placeholder="Payment Amount">
+    <button type="submit">Submit</button>
+  </form>
+  <a>  ...  </a>
+  <button (click)="showForm = !showForm">Miss month payment same length</button>
+  <form *ngIf="showForm" (ngSubmit)="missMonthsPaymentSameLength(selectedItem)">
+    <input type="number" [(ngModel)]="selectedItem.id" name="LoanID" placeholder="Loan ID">
+    <input type="date" [(ngModel)]="selectedItem.newLoanMonth" name="newLoanMonth" placeholder="Loan Month">
+    <input type="number" [(ngModel)]="selectedItem.newPaymentAmount" name="newPaymentAmount" placeholder="Payment Amount">
+    <button type="submit">Submit</button>
+  </form>
+  <a>  ...  </a>
+  <button (click)="showForm = !showForm">Miss month payment extend length</button>
+  <form *ngIf="showForm" (ngSubmit)="missMonthsPaymentExtendLength(selectedItem)">
+    <input type="number" [(ngModel)]="selectedItem.id" name="LoanID" placeholder="Loan ID">
+    <input type="date" [(ngModel)]="selectedItem.newLoanMonth" name="newLoanMonth" placeholder="Loan Month">
+    <input type="number" [(ngModel)]="selectedItem.newPaymentAmount" name="newPaymentAmount" placeholder="Payment Amount">
+    <button type="submit">Submit</button>
+  </form>
+</div>
 <pagination-controls (pageChange)="p = $event"></pagination-controls>

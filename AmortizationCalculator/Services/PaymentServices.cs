@@ -19,18 +19,24 @@ namespace AmortizationCalculator.Services
         public async Task<Loan> RetrieveLoanFromPayment(Payment payment)
         {
             var sql = "SELECT loanID FROM payment WHERE paymentId = @Id";
-            var loanId = await _connection.QueryFirstOrDefaultAsync<int>(sql, new { Id = payment.Id });
+            var loanId = await _connection.QueryFirstOrDefaultAsync<int>(sql, new { Id = payment.paymentID });
 
             var sqlLoan = "SELECT * FROM Loan WHERE Id = @LoanId";
             var loan = await _connection.QueryFirstOrDefaultAsync<Loan>(sqlLoan, new { LoanId = loanId });
 
             return loan;
         }
+        public async Task<int> LastLoanInserted()
+        {
+            string sql = "SELECT LoanID FROM payment ORDER BY paymentID DESC LIMIT 1;";
+            var loanId = await _connection.QuerySingleAsync<int>(sql);
+            return loanId;
+        }
 
         public async Task<Payment> MakeDifferentPayment(Payment payment) 
         {
             string sql = "UPDATE payment SET amountleft = @amountleft, monthlypayment = @monthlypayment, principal = @principal," +
-                " interest = @interest, loanmonth = @loanmonth, loanID = @loanID WHERE paymentId = @Id";
+                " interest = @interest, loanmonth = @loanmonth, loanID = @loanID WHERE paymentId = @paymentID";
 
             Loan loan = await RetrieveLoanFromPayment(payment);
 
@@ -39,17 +45,20 @@ namespace AmortizationCalculator.Services
             await _connection.ExecuteAsync(sql, payment);
             return payment;
         }
-        public async Task<IEnumerable<Payment>> GetAllPayemnts()
+        public async Task<IEnumerable<Payment>> GetAllPayments()
         {
-            return await _connection.QueryAsync<Payment>("SELECT * FROM payment");
+            int loanId = await LastLoanInserted();
+            string sql = "SELECT * FROM payment WHERE loanID = @LoanId;";
+            return await _connection.QueryAsync<Payment>(sql, new { LoanId = loanId });
         }
+
         public async Task DeleteOtherPayments(int id)
         {
-            var sql = "SELECT loanID FROM payment WHERE paymentId = @Id";
+            var sql = "SELECT loanID FROM payment WHERE paymentId = @id";
             var loanId = await _connection.QueryFirstOrDefaultAsync<int>(sql, new { Id = id });
 
             // Delete all records from the payment table that have the same loanID and a paymentId greater than the given id
-            sql = "DELETE FROM payment WHERE loanID = @LoanId AND paymentId > @Id";
+            sql = "DELETE FROM payment WHERE loanID = @LoanId AND paymentId > @id";
             await _connection.ExecuteAsync(sql, new { LoanId = loanId, Id = id });
         }
         public async Task<Payment> AdjustPayment(Payment payment)
@@ -120,7 +129,7 @@ namespace AmortizationCalculator.Services
         public async Task<Payment> MissedPaymentRegister(Payment payment)
         {
             string sql = "UPDATE payment SET amountleft = @amountleft, monthlypayment = @monthlypayment, " +
-                "principal = @principal, interest = @interest, loanmonth = @loanmonth, loanID = @loanID WHERE paymentID = @ID";
+                "principal = @principal, interest = @interest, loanmonth = @loanmonth, loanID = @loanID WHERE paymentID = @paymentID";
 
             Loan loan = await RetrieveLoanFromPayment(payment);
             double prevMonthlyPayment = payment.MonthlyPayment;
@@ -138,23 +147,27 @@ namespace AmortizationCalculator.Services
         }
         public async Task<Payment> CreatePaymentFromNewPayment(NewPayment newPayment)
         {
-            string sql = "SELECT * FROM payment WHERE Id = @LoanID AND LoanMonth = @LoanMonth";
-            var parameters = new { Id = newPayment.Id, LoanMonth = newPayment.LoanMonth };
+            string sql = "SELECT * FROM payment WHERE LoanID = @LoanID AND LoanMonth = @LoanMonth";
+            var parameters = new { LoanID = newPayment.LoanID, LoanMonth = newPayment.LoanMonth };
             Payment payment = await _connection.QuerySingleOrDefaultAsync<Payment>(sql, parameters);
 
             // If no matching record was found, create a new one
             if (payment == null)
             {
-                payment = new Payment();
+                payment = new Payment
+                {
+                    LoanMonth = newPayment.LoanMonth,
+                    MonthlyPayment = newPayment.PayAmount
+                };
             }
-
-            // Update the payment with the new payment details
-            payment.Id = newPayment.Id;
-            payment.LoanMonth = newPayment.LoanMonth;
-            payment.AmountLeft = newPayment.AmountLeft;
+            else
+            {
+                payment.MonthlyPayment = newPayment.PayAmount;
+            }
 
             return payment;
         }
+
 
     }
 

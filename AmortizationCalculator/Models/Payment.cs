@@ -1,6 +1,6 @@
 ﻿public class Payment
 {
-    public int Id { get; set; }
+    public int paymentID { get; set; }
     public DateTime LoanMonth { get; set; }
     public double MonthlyPayment { get; set; } = 0;
     public double AmountLeft { get; set; }

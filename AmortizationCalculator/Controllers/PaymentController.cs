@@ -38,7 +38,7 @@ namespace AmortizationCalculator.Controllers
         {
             try
             {
-                var users = await _paymentService.GetAllPayemnts();
+                var users = await _paymentService.GetAllPayments();
                 return Ok(users);
             }
             catch (Exception ex)
@@ -49,12 +49,19 @@ namespace AmortizationCalculator.Controllers
         }
 
         [HttpPost("Change-This-Months-Payment")]
-        public async Task<IActionResult> ChangeMonthlyPayment(Payment payment)
+        public async Task<IActionResult> ChangeMonthlyPayment(NewPayment newPayment)
         {
 
             try
             {
+                Payment payment = await _paymentService.CreatePaymentFromNewPayment(newPayment);
                 await _paymentService.MakeDifferentPayment(payment);
+                await DeleteOtherPayments(payment.paymentID);
+                payment = await _paymentService.RegisterAdjustedPaymentInterestDouble(payment);
+                while (payment.AmountLeft > 0)
+                {
+                    payment = await _paymentService.RegisterAdjustedPayment(payment);
+                }
                 return Ok();
             }
             catch (Exception ex)
@@ -65,12 +72,13 @@ namespace AmortizationCalculator.Controllers
         }
 
         [HttpPost("Missed-payment-Extend-Loan")]
-        public async Task<IActionResult> MissedPaymentExtendLoan(Payment payment)
+        public async Task<IActionResult> MissedPaymentExtendLoan(NewPayment newPayment)
         {
             try
             {
+                Payment payment = await _paymentService.CreatePaymentFromNewPayment(newPayment);
                 payment = await _paymentService.MissedPaymentRegister(payment);
-                await DeleteOtherPayments(payment.Id);
+                await DeleteOtherPayments(payment.paymentID);
                 payment = await _paymentService.RegisterAdjustedPaymentInterestDouble(payment);
                 while (payment.AmountLeft > 0)
                 {
@@ -86,12 +94,13 @@ namespace AmortizationCalculator.Controllers
         }
 
         [HttpPost("Missed-payment-same-length")]
-        public async Task<IActionResult> MissedPaymentSameLength(Payment payment)
+        public async Task<IActionResult> MissedPaymentSameLength(NewPayment newPayment)
         {
             try
             {
+                Payment payment = await _paymentService.CreatePaymentFromNewPayment(newPayment);
                 payment = await _paymentService.MissedPaymentRegister(payment);
-                await DeleteOtherPayments(payment.Id);
+                await DeleteOtherPayments(payment.paymentID);
                 payment.MonthlyPayment = await _paymentService.CalculateMonthlyCost(payment);
                 while (payment.AmountLeft > 0)
                 {
@@ -112,8 +121,7 @@ namespace AmortizationCalculator.Controllers
             try
             {
                 Payment payment = await _paymentService.CreatePaymentFromNewPayment(newPayment);
-                await ChangeMonthlyPayment(payment);
-                await DeleteOtherPayments(payment.Id);
+                await DeleteOtherPayments(payment.paymentID);
                 while (payment.AmountLeft > 0)
                 {
                     payment = await _paymentService.RegisterAdjustedPayment(payment);
