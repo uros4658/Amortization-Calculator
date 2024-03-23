@@ -70,8 +70,7 @@
               "RelativeToolTip": "AmortizationCalculator\\Interfaces\\ICalculationServices.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-23T11:26:41.111Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-23T11:26:41.111Z"
             },
             {
               "$type": "Document",
@@ -83,8 +82,7 @@
               "RelativeToolTip": "AmortizationCalculator\\Controllers\\PaymentController.cs",
               "ViewState": "AQIAABoAAAAAAAAAAAAuwCYAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T11:12:18.457Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T11:12:18.457Z"
             },
             {
               "$type": "Document",
@@ -96,8 +94,7 @@
               "RelativeToolTip": "AmortizationCalculator\\Interfaces\\IPaymentService.cs",
               "ViewState": "AQIAAAQAAAAAAAAAAAAgwA0AAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T11:12:24.813Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T11:12:24.813Z"
             },
             {
               "$type": "Document",
@@ -107,7 +104,7 @@
               "RelativeDocumentMoniker": "AmortizationCalculator\\Services\\PaymentServices.cs",
               "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Services\\PaymentServices.cs",
               "RelativeToolTip": "AmortizationCalculator\\Services\\PaymentServices.cs",
-              "ViewState": "AQIAACoAAAAAAAAAAAAtwDQAAAAAAAAA",
+              "ViewState": "AQIAACgAAAAAAAAAAAAqwDQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-21T10:56:37.958Z",
               "EditorCaption": ""
@@ -122,8 +119,7 @@
               "RelativeToolTip": "AmortizationCalculator\\Interfaces\\IUserService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T11:07:01.026Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T11:07:01.026Z"
             },
             {
               "$type": "Document",
@@ -135,8 +131,7 @@
               "RelativeToolTip": "AmortizationCalculator\\Controllers\\AuthorizationController.cs",
               "ViewState": "AQIAADMAAAAAAAAAAADwv0IAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T10:31:32.508Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T10:31:32.508Z"
             },
             {
               "$type": "Document",
@@ -160,8 +155,7 @@
               "RelativeToolTip": "AmortizationCalculator\\Models\\Loan.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T09:49:45.125Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T09:49:45.125Z"
             },
             {
               "$type": "Document",
@@ -173,8 +167,7 @@
               "RelativeToolTip": "AmortizationCalculator\\Services\\CalculationServices.cs",
               "ViewState": "AQIAAF8AAAAAAAAAAAAIwHoAAABOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T09:48:58.484Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T09:48:58.484Z"
             },
             {
               "$type": "Document",
@@ -186,8 +179,7 @@
               "RelativeToolTip": "AmortizationCalculator\\Controllers\\CalculationController.cs",
               "ViewState": "AQIAACUAAAAAAAAAAAAuwDYAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T10:56:30.665Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-12T10:56:30.665Z"
             },
             {
               "$type": "Document",
@@ -199,8 +191,7 @@
               "RelativeToolTip": "AmortizationCalculator\\Models\\Payment.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAAAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T11:19:21.897Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T11:19:21.897Z"
             },
             {
               "$type": "Document",

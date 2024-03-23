@@ -3,6 +3,13 @@ import { ChartService } from '../chartservice.service'; // Import your ChartServ
 import { Chart } from 'chart.js'; // Import Chart from chart.js
 import { Payment } from '@app/_models/payment';
 import 'chart.js/auto';
+import html2canvas from 'html2canvas';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+
+
+Object.assign(pdfMake, pdfFonts);
+
 
 @Component({
   selector: 'app-chart-page',
@@ -13,6 +20,7 @@ export class ChartPageComponent implements OnInit, AfterViewInit {
   @ViewChild('chartCanvas') chartCanvas!: ElementRef; // Add '!' here
   chartData!: Payment[]; // Add '!' here
   chart: any;
+  data: any;
 
   constructor(private chartService: ChartService) { }
 
@@ -28,7 +36,32 @@ export class ChartPageComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.createChart(); // Call createChart after you get the data
   }
-
+  createPdf() {
+    // Get the payment data
+    const paymentData = this.chartData;
+    // Format the payment data into a string
+    let paymentList = '';
+    for (let payment of paymentData) {
+      paymentList += ` Loan Month: ${payment.loanMonth}, Monthly Payment: ${payment.monthlyPayment}, Amount Left: ${payment.amountLeft}, Principal: ${payment.principal}, Interest: ${payment.interest}\n`;
+    }
+    // Convert the chart to a canvas and add it to the PDF
+    let chartElement = document.getElementById('chart');
+    if (chartElement) {
+      html2canvas(chartElement).then(canvas => {
+        const chartData = canvas.toDataURL();
+        const docDefinition = {
+          content: [
+            { text: 'List of Payments:', bold: true },
+            { text: paymentList },
+            { image: chartData, width: 500 },
+          ]
+        };
+        pdfMake.createPdf(docDefinition).download('Payments.pdf');
+      });
+  }
+  else{
+    console.error('Element with id "chart" not found');
+  }}
   createChart() {
     const labels = this.chartData.map((payment: Payment) => {
       const date = new Date(payment.loanMonth);

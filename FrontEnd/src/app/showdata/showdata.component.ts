@@ -20,6 +20,7 @@ export class ShowDataComponent implements OnInit {
     });
   }
 
+  
   changePayment(selectedItem: any) {
     this.showDataService.changePayment(selectedItem.id, selectedItem.newLoanMonth, selectedItem.newPaymentAmount).subscribe(
       response => {
