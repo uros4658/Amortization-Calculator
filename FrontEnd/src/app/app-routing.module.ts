@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { ChartPageComponent } from './chart-page/chart-page.component';
 import { HomeComponent } from './home';
 import { AuthGuard } from './_helpers';
 import { ShowDataComponent } from './showdata/showdata.component';
@@ -15,6 +15,7 @@ const routes: Routes = [
     { path: 'account', loadChildren: accountModule },
     { path: 'showdata', component: ShowDataComponent, canActivate: [AuthGuard] },
     { path: 'loan-form', component: LoanFormComponent, canActivate: [AuthGuard] }, // Add this line
+    { path: 'chart', component: ChartPageComponent, canActivate: [AuthGuard]},
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

@@ -25,21 +25,22 @@ export class AccountService {
         return this.userSubject.value;
     }
 
-    login(username: string, password: string) {
+    login(username: string, password: string) { 
         return this.http.post<any>('https://localhost:7172/api/Authorization/login', { username, password })
             .pipe(
                 tap(response => console.log(response)), // Log the raw response here
                 map(user => {
                     // parse user details and jwt token from response
                     if (user && user.token) {
-                        // store user details and jwt token in local storage to keep user logged in between page refreshes
-                        localStorage.setItem('user', JSON.stringify(user));
+                        // store username in local storage to keep user logged in between page refreshes
+                        localStorage.setItem('username', username);
                         this.userSubject.next(user);
                     }
                     return user;
                 })
             );        
     }
+    
     
     
     logout() {

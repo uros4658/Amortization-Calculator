@@ -45,11 +45,10 @@ namespace AmortizationCalculator.Services
             await _connection.ExecuteAsync(sql, payment);
             return payment;
         }
-        public async Task<IEnumerable<Payment>> GetAllPayments()
+        public async Task<IEnumerable<Payment>> GetAllPayments(int loanID)
         {
-            int loanId = await LastLoanInserted();
             string sql = "SELECT * FROM payment WHERE loanID = @LoanId;";
-            return await _connection.QueryAsync<Payment>(sql, new { LoanId = loanId });
+            return await _connection.QueryAsync<Payment>(sql, new { LoanId = loanID });
         }
 
         public async Task DeleteOtherPayments(int id)

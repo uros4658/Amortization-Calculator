@@ -34,11 +34,11 @@ namespace AmortizationCalculator.Controllers
         }
 
         [HttpGet("get-all-payments")]
-        public async Task<ActionResult<IEnumerable<User>>> GetAllPayments()
+        public async Task<ActionResult<IEnumerable<User>>> GetAllPayments(int loanID)
         {
             try
             {
-                var users = await _paymentService.GetAllPayments();
+                var users = await _paymentService.GetAllPayments(loanID);
                 return Ok(users);
             }
             catch (Exception ex)

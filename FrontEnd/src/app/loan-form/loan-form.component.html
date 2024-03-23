@@ -25,3 +25,28 @@
   </div>
   <button type="submit">Submit</button>
 </form>
+<button type="button" (click)="getUserLoans()">Show All Loans</button>
+
+<table *ngIf="showLoans">
+  <thead>
+    <tr>
+      <th>Loan Amount</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Interest Rate</th>
+      <th>Down Payment</th>
+      <th>Payments Per Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let loan of loans" (click)="onRowClick(loan.id)">
+      <td>{{ loan.loanAmount | number:'1.0-3' }}</td>
+      <td>{{ loan.startDate }}</td>
+      <td>{{ loan.endDate }}</td>
+      <td>{{ loan.interestRate | number:'1.0-3' }}</td>
+      <td>{{ loan.downPayment | number:'1.0-3' }}</td>
+      <td>{{ loan.paymentsPerYear | number:'1.0-3' }}</td>
+    </tr>    
+  </tbody>
+</table>
+

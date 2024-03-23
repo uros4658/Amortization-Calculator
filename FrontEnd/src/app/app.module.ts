@@ -11,6 +11,7 @@ import { AlertComponent } from './_components';
 import { HomeComponent } from './home';
 import { ShowDataComponent } from './showdata/showdata.component';
 import { LoanFormComponent } from './loan-form/loan-form.component';
+import { ChartPageComponent } from './chart-page/chart-page.component';
 
 @NgModule({
     imports: [
@@ -26,7 +27,8 @@ import { LoanFormComponent } from './loan-form/loan-form.component';
         AlertComponent,
         HomeComponent,
         ShowDataComponent,
-        LoanFormComponent
+        LoanFormComponent,
+        ChartPageComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -21,7 +21,7 @@ namespace AmortizationCalc.Controllers
 
 
         [HttpPost("add-amortization-plan")]
-        public async Task<ActionResult<Payment>> AddAllPayments(Loan loan)
+        public async Task<ActionResult<Loan>> AddAllPayments(Loan loan)
         {
             try
             {
@@ -31,12 +31,49 @@ namespace AmortizationCalc.Controllers
                 {
                     payment = await _calculationServices.RegisterOneMonth(loan, payment);
                 }
-                return Ok(payment);
+                return Ok(loan);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet("last-loan-id")]
+        public async Task<IActionResult> GetLastLoanID()
+        {
+            try
+            {
+                var lastLoanID = await _calculationServices.getLastLoanID();
+                return Ok(lastLoanID);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception message
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+
+        [HttpGet("{username}/loans")]
+        public async Task<IActionResult> GetUserLoans(string username)
+        {
+            try
+            {
+                var loans = await _calculationServices.GetAllLoans(username);
+                if (loans == null || !loans.Any())
+                {
+                    return NotFound();
+                }
+
+                return Ok(loans);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
     }
 }

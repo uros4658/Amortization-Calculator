@@ -14,10 +14,10 @@
     <tr *ngFor="let item of data | paginate: { itemsPerPage: 10, currentPage: p }">
       <td>{{ item.id }}</td>
       <td>{{ item.loanMonth }}</td>
-      <td>{{ item.monthlyPayment }}</td>
-      <td>{{ item.amountLeft }}</td>
-      <td>{{ item.principal }}</td>
-      <td>{{ item.interest }}</td>
+      <td>{{ item.monthlyPayment | number:'1.0-3' }}</td>
+      <td>{{ item.amountLeft | number:'1.0-3' }}</td>
+      <td>{{ item.principal | number:'1.0-3' }}</td>
+      <td>{{ item.interest | number:'1.0-3' }}</td>
       <td>{{ item.loanID }}</td>
     </tr>
   </tbody>
@@ -55,5 +55,9 @@
     <input type="number" [(ngModel)]="selectedItem.newPaymentAmount" name="newPaymentAmount" placeholder="Payment Amount">
     <button type="submit">Submit</button>
   </form>
+  <div style="display: flex; justify-content: center;">
+    <!-- ...existing buttons and forms... -->
+    <button routerLink="/chart">Go to Chart Page</button>
+  </div>
 </div>
 <pagination-controls (pageChange)="p = $event"></pagination-controls>

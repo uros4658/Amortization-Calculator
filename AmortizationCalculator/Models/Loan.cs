@@ -9,5 +9,6 @@
         public double InterestRate { get; set; }
         public int DownPayment { get; set; }
         public int PaymentsPerYear { get; set; }
+        public string Username { get; set; }
     }
 }

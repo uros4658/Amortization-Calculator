@@ -12,7 +12,9 @@ namespace AmortizationCalc.Interfaces
         Payment MakePayment(Loan loan, int ID);
         Task<Payment> RegisterOneMonth(Loan loan, Payment payment);
         Task<int> AddLoan(Loan loan);
-        public Task<Payment> AdjustPayment(Payment payment, Loan loan);
+        Task<Payment> AdjustPayment(Payment payment, Loan loan);
+        Task<IEnumerable<Loan>> GetAllLoans(string username);
+        Task<int> getLastLoanID();
 
     }
 }

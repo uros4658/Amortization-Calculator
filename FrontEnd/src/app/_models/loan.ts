@@ -6,5 +6,6 @@ export class Loan {
     public interestRate!: number;
     public downPayment!: number;
     public paymentsPerYear!: number;
+    public username!: string;
   }
   

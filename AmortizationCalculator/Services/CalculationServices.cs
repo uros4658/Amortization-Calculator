@@ -103,6 +103,13 @@ namespace AmortizationCalc.Services
 
             return payment;
         }
+        public async Task<int> getLastLoanID()
+        {
+            string sql = "SELECT MAX(ID) FROM loan";
+            var maxLoanId = await _connection.QueryAsync<int>(sql);
+            return maxLoanId.Single();
+        }
+
         public async Task<Payment> RegisterOneMonth(Loan loan, Payment payment)
         {
             string sql = "INSERT INTO payment (amountleft, monthlypayment, principal, interest, loanmonth, loanID) " +
@@ -113,15 +120,21 @@ namespace AmortizationCalc.Services
             if (payment.AmountLeft + payment.Interest < payment.MonthlyPayment)
             {
                 payment.MonthlyPayment = payment.AmountLeft + payment.Interest;
+                payment.Principal = payment.MonthlyPayment - payment.Interest;
             }
 
             await _connection.ExecuteAsync(sql, payment);
             return payment;
         }
+        public async Task<IEnumerable<Loan>> GetAllLoans(string username)
+        {
+            string sql = "SELECT * FROM loan WHERE username = @username;";
+            return await _connection.QueryAsync<Loan>(sql, new { username });
+        }
         public async Task<int> AddLoan(Loan loan)
         {
-            string sql = "INSERT INTO Loan (LoanAmount, StartDate, EndDate, InterestRate, DownPayment, PaymentsPerYear) " +
-                "VALUES (@LoanAmount, @StartDate, @EndDate, @InterestRate, @DownPayment, @PaymentsPerYear); " +
+            string sql = "INSERT INTO Loan (LoanAmount, StartDate, EndDate, InterestRate, DownPayment, PaymentsPerYear, Username) " +
+                "VALUES (@LoanAmount, @StartDate, @EndDate, @InterestRate, @DownPayment, @PaymentsPerYear, @Username); " +
                 "SELECT LAST_INSERT_ID();";
 
             int newId = await _connection.QuerySingleAsync<int>(sql, loan);

@@ -34,7 +34,7 @@ export class ShowDataComponent implements OnInit {
     );
   }
   changeOneMonthPayment(selectedItem: any) {
-    this.showDataService.changePayment(selectedItem.id, selectedItem.newLoanMonth, selectedItem.newPaymentAmount).subscribe(
+    this.showDataService.changeOneMonthPayment(selectedItem.id, selectedItem.newLoanMonth, selectedItem.newPaymentAmount).subscribe(
       response => {
         console.log(response);
         // Refresh the page or update the data
@@ -47,7 +47,7 @@ export class ShowDataComponent implements OnInit {
     );
   }
   missMonthsPaymentSameLength(selectedItem: any) {
-    this.showDataService.changePayment(selectedItem.id, selectedItem.newLoanMonth, selectedItem.newPaymentAmount).subscribe(
+    this.showDataService.missMonthsPaymentSameLength(selectedItem.id, selectedItem.newLoanMonth, selectedItem.newPaymentAmount).subscribe(
       response => {
         console.log(response);
         // Refresh the page or update the data
@@ -60,7 +60,7 @@ export class ShowDataComponent implements OnInit {
     );
   }
   missMonthsPaymentExtendLength(selectedItem: any) {
-    this.showDataService.changePayment(selectedItem.id, selectedItem.newLoanMonth, selectedItem.newPaymentAmount).subscribe(
+    this.showDataService.missMonthsPaymentExtendLength(selectedItem.id, selectedItem.newLoanMonth, selectedItem.newPaymentAmount).subscribe(
       response => {
         console.log(response);
         // Refresh the page or update the data

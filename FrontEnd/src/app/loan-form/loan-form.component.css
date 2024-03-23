@@ -1,26 +1,27 @@
-form {
-    width: 300px;
-    margin: 0 auto;
+form, button, table {
+    width: 100%;
+    margin-bottom: 15px;
 }
 
 form div {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 15px;
 }
 
 form label {
-    display: block;
     margin-bottom: 5px;
 }
 
 form input[type="number"],
 form input[type="date"] {
-    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-form button[type="submit"] {
+form button[type="submit"],
+button[type="button"] {
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
@@ -30,6 +31,28 @@ form button[type="submit"] {
     float: right;
 }
 
-form button[type="submit"]:hover {
+form button[type="submit"]:hover,
+button[type="button"]:hover {
     background-color: #45a049;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
 }

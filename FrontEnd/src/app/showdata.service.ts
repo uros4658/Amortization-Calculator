@@ -6,28 +6,34 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ShowDataService {
-  private apiUrl = 'https://localhost:7172/api/Payment/get-all-payments';
+  private baseApiUrl = 'https://localhost:7172/api';
+  private paymentApiUrl = `${this.baseApiUrl}/Payment`;
 
   constructor(private http: HttpClient) { }
 
   getData(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+    const loanID = localStorage.getItem('loanID');
+    const url = `${this.paymentApiUrl}/get-all-payments?loanID=${loanID}`;
+    return this.http.get<any>(url);
   }
 
   changePayment(LoanID: number, loanMonth: Date, PayAmount: number): Observable<any> {
-    const url = 'https://localhost:7172/api/Payment/Change-Delete-and-make-full-payment-new-monthly';
+    const url = `${this.paymentApiUrl}/Change-Delete-and-make-full-payment-new-monthly`;
     return this.http.post<any>(url, { LoanID, loanMonth, PayAmount });
   }
+
   changeOneMonthPayment(LoanID: number, loanMonth: Date, PayAmount: number): Observable<any> {
-    const url = 'https://localhost:7172/api/Payment/Change-This-Months-Payment';
+    const url = `${this.paymentApiUrl}/Change-This-Months-Payment`;
     return this.http.post<any>(url, { LoanID, loanMonth, PayAmount });
   }
+
   missMonthsPaymentSameLength(LoanID: number, loanMonth: Date, PayAmount: number): Observable<any> {
-    const url = 'https://localhost:7172/api/Payment/Missed-payment-same-length';
+    const url = `${this.paymentApiUrl}/Missed-payment-same-length`;
     return this.http.post<any>(url, { LoanID, loanMonth, PayAmount });
   }
+
   missMonthsPaymentExtendLength(LoanID: number, loanMonth: Date, PayAmount: number): Observable<any> {
-    const url = 'https://localhost:7172/api/Payment/Missed-payment-Extend-length';
+    const url = `${this.paymentApiUrl}/Missed-payment-Extend-length`;
     return this.http.post<any>(url, { LoanID, loanMonth, PayAmount });
   }
 }
