@@ -54,8 +54,7 @@
               "RelativeToolTip": "AmortizationCalculator\\Interfaces\\IPaymentService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-26T15:36:47.726Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-26T15:36:47.726Z"
             },
             {
               "$type": "Document",
@@ -65,7 +64,7 @@
               "RelativeDocumentMoniker": "AmortizationCalculator\\Controllers\\PaymentController.cs",
               "ToolTip": "C:\\ProjekatProg\\AmortizationCalculator\\AmortizationCalculator\\Controllers\\PaymentController.cs",
               "RelativeToolTip": "AmortizationCalculator\\Controllers\\PaymentController.cs",
-              "ViewState": "AQIAACoAAAAAAAAAAAAMwEEAAAAcAAAA",
+              "ViewState": "AQIAACoAAAAAAAAAAAAMwDcAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-26T14:48:08.434Z",
               "EditorCaption": ""
