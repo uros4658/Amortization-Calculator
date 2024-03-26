@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Loan } from '../_models/loan';
 import { LoanService } from '../_services/loan.service';
-import { Router, ActivatedRoute } from '@angular/router'; // import Router and ActivatedRoute
+import { Router, ActivatedRoute } from '@angular/router';
+import { MiscCost } from '@app/_models/misccost';
 
 @Component({
   selector: 'app-loan-form',
@@ -14,6 +15,8 @@ export class LoanFormComponent implements OnInit {
   loan: Loan = new Loan();
   loans: Loan[] = [];
   showLoans = false;
+  miscCosts: MiscCost[] = [new MiscCost()];
+
 
   constructor(
     private loanService: LoanService,
@@ -43,17 +46,39 @@ export class LoanFormComponent implements OnInit {
     localStorage.setItem('loanID', loanID.toString());
     this.router.navigate(['../showdata'], { relativeTo: this.route });
   }
+  addMiscCost() {
+    this.miscCosts.push(new MiscCost());
+  }
+  removeMiscCost(index: number) {
+      this.miscCosts.splice(index, 1);
+  }
   
-
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.loan.username = localStorage.getItem('username')!; // get username from local storage
-      this.loanService.addAmortizationPlan(this.loan).subscribe(
+  
+      // Step 1: Create the loan
+      this.loanService.createLoan(this.loan).subscribe(
         response => {
           console.log(response);
-          this.loanService.getLastLoanID().subscribe(
-            lastLoanID => {
-              localStorage.setItem('loanID', lastLoanID.toString());
+  
+          // Step 2: Create the misc costs if they exist
+          for (let miscCost of this.miscCosts) {
+            miscCost.loanID = this.loan.id;
+            this.loanService.createMisc(miscCost).subscribe(
+              response => {
+                console.log(response);
+              },
+              error => {
+                console.error(error);
+              }
+            );
+          }
+  
+          // Step 3: Add the payment plan
+          this.loanService.addPaymentPlan(this.loan).subscribe(
+            response => {
+              console.log(response);
               this.router.navigate(['../showdata'], { relativeTo: this.route });
             },
             error => {
@@ -66,6 +91,7 @@ export class LoanFormComponent implements OnInit {
         }
       );
     }
+    localStorage.setItem('loanID', this.loan.id.toString());
   }
   
 }

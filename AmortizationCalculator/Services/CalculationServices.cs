@@ -1,5 +1,6 @@
 ﻿using AmortizationCalc.Interfaces;
 using AmortizationCalc.Models;
+using AmortizationCalculator.Models;
 using Dapper;
 using MySql.Data.MySqlClient;
 
@@ -109,8 +110,14 @@ namespace AmortizationCalc.Services
             var maxLoanId = await _connection.QueryAsync<int>(sql);
             return maxLoanId.Single();
         }
+        public async Task<Payment> AddMiscCost(Payment payment, MiscCost misccost)
+        {
+            payment.MonthlyPayment += misccost.Cost;
+            payment.Interest += misccost.Cost;
+            return payment;
+        }
 
-        public async Task<Payment> RegisterOneMonth(Loan loan, Payment payment)
+        public async Task<Payment> RegisterOneMonth(Loan loan, Payment payment, MiscCost[] miscCost)
         {
             string sql = "INSERT INTO payment (amountleft, monthlypayment, principal, interest, loanmonth, loanID) " +
                 "VALUES (@amountleft, @monthlypayment, @principal, @interest, @loanmonth, @loanID)";
@@ -122,10 +129,28 @@ namespace AmortizationCalc.Services
                 payment.MonthlyPayment = payment.AmountLeft + payment.Interest;
                 payment.Principal = payment.MonthlyPayment - payment.Interest;
             }
+            // place holder
+            double monthlyPayment = payment.MonthlyPayment;
+            double interestPayment = payment.Interest;
+
+            int monthsSinceStart = ((payment.LoanMonth.Year - loan.StartDate.Year) * 12) + payment.LoanMonth.Month - loan.StartDate.Month;
+
+            for (int i = 0; i < miscCost.Length; i++)
+            {
+                if (monthsSinceStart % miscCost[i].FrequencyMonths == 0)
+                {
+                    await AddMiscCost(payment, miscCost[i]);
+                }
+            }
 
             await _connection.ExecuteAsync(sql, payment);
+
+            payment.MonthlyPayment = monthlyPayment;
+            payment.Interest = interestPayment;
+
             return payment;
         }
+
         public async Task<IEnumerable<Loan>> GetAllLoans(string username)
         {
             string sql = "SELECT * FROM loan WHERE username = @username;";
@@ -141,5 +166,24 @@ namespace AmortizationCalc.Services
             return newId;
         }
 
+        public async Task<MiscCost[]> GetMisc(int LoanID)
+        {
+            string sql = "SELECT Cost, LoanID, frequency as FrequencyMonths FROM miscCost WHERE LoanID = @LoanID;";
+            var miscCosts = await _connection.QueryAsync<MiscCost>(sql, new { LoanID });
+            return miscCosts.ToArray();
+        }
+
+
+        public async Task InsertMisc(MiscCost miscCost)
+        {
+            string sql = "INSERT INTO miscCost (frequency, cost, LoanID) VALUES (@Frequency, @Cost, @LoanID);";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("Frequency", miscCost.FrequencyMonths);
+            parameters.Add("Cost", miscCost.Cost);
+            parameters.Add("LoanID", miscCost.LoanID);
+
+            await _connection.ExecuteAsync(sql, parameters);
+        }
     }
 }

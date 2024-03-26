@@ -49,4 +49,13 @@
     </tr>    
   </tbody>
 </table>
+<div *ngFor="let miscCost of miscCosts; let i = index">
+  <label for="frequencyMonths{{i}}">Frequency Months:</label>
+  <input type="number" id="frequencyMonths{{i}}" name="frequencyMonths{{i}}" [(ngModel)]="miscCost.FrequencyMonths">
+  <label for="cost{{i}}">Cost:</label>
+  <input type="number" id="cost{{i}}" name="cost{{i}}" [(ngModel)]="miscCost.Cost">
+  <button type="button" (click)="removeMiscCost(i)">Remove</button>
+</div>
+<button type="button" (click)="addMiscCost()">Add Misc Cost</button>
+
 

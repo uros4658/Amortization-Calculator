@@ -4,6 +4,7 @@ using AmortizationCalc.Models;
 using AmortizationCalc.Services;
 using System.Threading.Tasks;
 using AmortizationCalc.Interfaces;
+using AmortizationCalculator.Models;
 
 namespace AmortizationCalc.Controllers
 {
@@ -17,26 +18,6 @@ namespace AmortizationCalc.Controllers
         public CalculationController(ICalculationServices calculationServices)
         {
             _calculationServices = calculationServices;
-        }
-
-
-        [HttpPost("add-amortization-plan")]
-        public async Task<ActionResult<Loan>> AddAllPayments(Loan loan)
-        {
-            try
-            {
-                int loanID = await _calculationServices.AddLoan(loan);
-                var payment = _calculationServices.MakePayment(loan, loanID);
-                while (payment.AmountLeft > 0)
-                {
-                    payment = await _calculationServices.RegisterOneMonth(loan, payment);
-                }
-                return Ok(loan);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
         }
 
         [HttpGet("last-loan-id")]
@@ -53,6 +34,60 @@ namespace AmortizationCalc.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+        [HttpPost("Create-loan")]
+        public async Task<IActionResult> CreateLoan(Loan loan)
+        {
+            try
+            {
+                int loanID = await _calculationServices.AddLoan(loan);
+                loan.Id = loanID;
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception details here
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpPost("add-payment-plan")]
+        public async Task<ActionResult<Loan>> AddAllPayments(Loan loan)
+        {
+            try
+            {
+                var lastLoanID = await _calculationServices.getLastLoanID();
+                var payment = _calculationServices.MakePayment(loan, lastLoanID);
+                MiscCost[] miscCost = await _calculationServices.GetMisc(lastLoanID);
+                while (payment.AmountLeft > 0)
+                {
+                    payment = await _calculationServices.RegisterOneMonth(loan, payment, miscCost);
+                }
+                return Ok(loan);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("Create-misc")]
+        public async Task<IActionResult> CreateMiscCost(MiscCost miscCost)
+        {
+            try
+            {
+                var lastLoanID = await _calculationServices.getLastLoanID();
+                miscCost.LoanID = lastLoanID;
+                await _calculationServices.InsertMisc(miscCost);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception details here
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        // Add other API endpoints here
 
 
         [HttpGet("{username}/loans")]
