@@ -92,7 +92,21 @@ namespace AmortizationCalculator.Services
 
             return monthlyPayment;
         }
-        public async Task<Payment> RegisterAdjustedPayment(Payment payment)
+        // It was either this or add a new interface in the controller (less of 2 evils)
+        public async Task<Payment> AddMiscCost(Payment payment, MiscCost misccost)
+        {
+            payment.MonthlyPayment += misccost.Cost;
+            payment.Interest += misccost.Cost;
+            return payment;
+        }
+        public async Task<MiscCost[]> GetMisc(int LoanID)
+        {
+            string sql = "SELECT Cost, LoanID, frequency as FrequencyMonths FROM miscCost WHERE LoanID = @LoanID;";
+            var miscCosts = await _connection.QueryAsync<MiscCost>(sql, new { LoanID });
+            return miscCosts.ToArray();
+        }
+
+        public async Task<Payment> RegisterAdjustedPayment(Payment payment, MiscCost[] miscCost)
         {
             string sql = "INSERT INTO payment (amountleft, monthlypayment, principal, interest, loanmonth, loanID) " +
                 "VALUES (@amountleft, @monthlypayment, @principal, @interest, @loanmonth, @loanID)";
@@ -107,7 +121,24 @@ namespace AmortizationCalculator.Services
                 payment.MonthlyPayment = payment.AmountLeft + payment.Interest;
             }
 
+            // place holders
+            double monthlyPayment = payment.MonthlyPayment;
+            double interestPayment = payment.Interest;
+
+            int monthsSinceStart = ((payment.LoanMonth.Year - loan.StartDate.Year) * 12) + payment.LoanMonth.Month - loan.StartDate.Month;
+
+            for (int i = 0; i < miscCost.Length; i++)
+            {
+                if (monthsSinceStart % miscCost[i].FrequencyMonths == 0)
+                {
+                    await AddMiscCost(payment, miscCost[i]);
+                }
+            }
+
             await _connection.ExecuteAsync(sql, payment);
+
+            payment.MonthlyPayment = monthlyPayment;
+            payment.Interest = interestPayment;
             return payment;
         }
         public async Task<Payment> RegisterAdjustedPaymentInterestDouble(Payment payment)

@@ -88,10 +88,14 @@ export class LoanFormComponent implements OnInit {
         },
         error => {
           console.error(error);
+          console.log("erorr");
         }
       );
     }
     localStorage.setItem('loanID', this.loan.id.toString());
   }
-  
+  moveToShowData(){
+    localStorage.setItem('loanID', '1');
+    this.router.navigate(['../showdata'], { relativeTo: this.route });
+  }
 }

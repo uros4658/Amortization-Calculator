@@ -129,7 +129,7 @@ namespace AmortizationCalc.Services
                 payment.MonthlyPayment = payment.AmountLeft + payment.Interest;
                 payment.Principal = payment.MonthlyPayment - payment.Interest;
             }
-            // place holder
+            // place holders
             double monthlyPayment = payment.MonthlyPayment;
             double interestPayment = payment.Interest;
 
@@ -172,7 +172,6 @@ namespace AmortizationCalc.Services
             var miscCosts = await _connection.QueryAsync<MiscCost>(sql, new { LoanID });
             return miscCosts.ToArray();
         }
-
 
         public async Task InsertMisc(MiscCost miscCost)
         {
