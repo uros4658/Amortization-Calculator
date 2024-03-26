@@ -93,5 +93,8 @@ export class LoanFormComponent implements OnInit {
     }
     localStorage.setItem('loanID', this.loan.id.toString());
   }
-  
+  moveToShowData(){
+    localStorage.setItem('loanID', '1');
+    this.router.navigate(['../showdata'], { relativeTo: this.route });
+  }
 }

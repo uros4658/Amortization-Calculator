@@ -57,10 +57,11 @@ namespace AmortizationCalculator.Controllers
                 Payment payment = await _paymentService.CreatePaymentFromNewPayment(newPayment);
                 await _paymentService.MakeDifferentPayment(payment);
                 await DeleteOtherPayments(payment.paymentID);
+                MiscCost[] miscCost = await _paymentService.GetMisc(payment.LoanID);
                 payment = await _paymentService.RegisterAdjustedPaymentInterestDouble(payment);
                 while (payment.AmountLeft > 0)
                 {
-                    payment = await _paymentService.RegisterAdjustedPayment(payment);
+                    payment = await _paymentService.RegisterAdjustedPayment(payment, miscCost);
                 }
                 return Ok();
             }
@@ -77,12 +78,13 @@ namespace AmortizationCalculator.Controllers
             try
             {
                 Payment payment = await _paymentService.CreatePaymentFromNewPayment(newPayment);
+                MiscCost[] miscCost = await _paymentService.GetMisc(payment.LoanID);
                 payment = await _paymentService.MissedPaymentRegister(payment);
                 await DeleteOtherPayments(payment.paymentID);
                 payment = await _paymentService.RegisterAdjustedPaymentInterestDouble(payment);
                 while (payment.AmountLeft > 0)
                 {
-                    payment = await _paymentService.RegisterAdjustedPayment(payment);
+                    payment = await _paymentService.RegisterAdjustedPayment(payment, miscCost);
                 }
                 return Ok();
             }
@@ -100,11 +102,12 @@ namespace AmortizationCalculator.Controllers
             {
                 Payment payment = await _paymentService.CreatePaymentFromNewPayment(newPayment);
                 payment = await _paymentService.MissedPaymentRegister(payment);
+                MiscCost[] miscCost = await _paymentService.GetMisc(payment.LoanID);
                 await DeleteOtherPayments(payment.paymentID);
                 payment.MonthlyPayment = await _paymentService.CalculateMonthlyCost(payment);
                 while (payment.AmountLeft > 0)
                 {
-                    payment = await _paymentService.RegisterAdjustedPayment(payment);
+                    payment = await _paymentService.RegisterAdjustedPayment(payment, miscCost);
                 }
                 return Ok();
             }
@@ -121,10 +124,11 @@ namespace AmortizationCalculator.Controllers
             try
             {
                 Payment payment = await _paymentService.CreatePaymentFromNewPayment(newPayment);
+                MiscCost[] miscCost = await _paymentService.GetMisc(payment.LoanID);
                 await DeleteOtherPayments(payment.paymentID);
                 while (payment.AmountLeft > 0)
                 {
-                    payment = await _paymentService.RegisterAdjustedPayment(payment);
+                    payment = await _paymentService.RegisterAdjustedPayment(payment, miscCost);
                 }
                 return Ok();
             }
@@ -143,16 +147,17 @@ namespace AmortizationCalculator.Controllers
                 Payment paymentEach = paymentEachN.paymentNMonths;
                 int n = paymentEachN.nMonths;
                 int i = 0;
+                MiscCost[] miscCost = await _paymentService.GetMisc(paymentUsual.LoanID);
                 while (paymentUsual.AmountLeft > 0)
                 {
                     if(i%n == 0)
                     {
-                        paymentEach = await _paymentService.RegisterAdjustedPayment(paymentEach);
+                        paymentEach = await _paymentService.RegisterAdjustedPayment(paymentEach, miscCost);
                         paymentUsual.AmountLeft = paymentUsual.AmountLeft - paymentEach.Principal;
                     }
                     else
                     {
-                        paymentUsual = await _paymentService.RegisterAdjustedPayment(paymentUsual);
+                        paymentUsual = await _paymentService.RegisterAdjustedPayment(paymentUsual, miscCost);
                     }
                 }
                 return Ok();
