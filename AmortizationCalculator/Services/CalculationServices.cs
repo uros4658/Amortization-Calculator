@@ -139,7 +139,7 @@ namespace AmortizationCalc.Services
             {
                 if (monthsSinceStart % miscCost[i].FrequencyMonths == 0)
                 {
-                    await AddMiscCost(payment, miscCost[i]);
+                    payment = await AddMiscCost(payment, miscCost[i]);
                 }
             }
 

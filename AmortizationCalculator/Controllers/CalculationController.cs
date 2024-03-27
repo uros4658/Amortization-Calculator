@@ -62,7 +62,8 @@ namespace AmortizationCalc.Controllers
                 {
                     payment = await _calculationServices.RegisterOneMonth(loan, payment, miscCost);
                 }
-                return Ok(loan);
+                loan.Id = lastLoanID;
+                return loan;
             }
             catch (Exception ex)
             {

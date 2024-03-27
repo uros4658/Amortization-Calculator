@@ -65,20 +65,23 @@ export class LoanFormComponent implements OnInit {
           // Step 2: Create the misc costs if they exist
           for (let miscCost of this.miscCosts) {
             miscCost.loanID = this.loan.id;
-            this.loanService.createMisc(miscCost).subscribe(
-              response => {
-                console.log(response);
-              },
-              error => {
-                console.error(error);
-              }
-            );
+            if(miscCost.FrequencyMonths != null && miscCost.FrequencyMonths != 0){
+              this.loanService.createMisc(miscCost).subscribe(
+                response => {
+                  console.log(response);
+                },
+                error => {
+                  console.error(error);
+                }
+              );
+            }
           }
   
           // Step 3: Add the payment plan
           this.loanService.addPaymentPlan(this.loan).subscribe(
             response => {
-              console.log(response);
+              this.loan = response as Loan;
+              localStorage.setItem('loanID', this.loan.id.toString());
               this.router.navigate(['../showdata'], { relativeTo: this.route });
             },
             error => {
@@ -92,7 +95,6 @@ export class LoanFormComponent implements OnInit {
         }
       );
     }
-    localStorage.setItem('loanID', this.loan.id.toString());
   }
   moveToShowData(){
     localStorage.setItem('loanID', '1');
