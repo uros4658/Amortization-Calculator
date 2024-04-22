@@ -59,4 +59,8 @@
     <button routerLink="/chart">Go to Chart Page</button>
   </div>
 </div>
+<!-- Add this inside your <div> element -->
+  <button (click)="calculateAndDisplayInterestRate()">Calculate Effective Interest Rate</button>
+  <input type="text" [(ngModel)]="effectiveInterestRate" readonly>
+  
 <pagination-controls (pageChange)="p = $event"></pagination-controls>

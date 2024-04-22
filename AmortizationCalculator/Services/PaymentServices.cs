@@ -197,8 +197,116 @@ namespace AmortizationCalculator.Services
 
             return payment;
         }
+        public async Task<Loan> RetrieveLoanFromLoanID(int loanID)
+        {
+            var sqlLoan = "SELECT * FROM Loan WHERE Id = @LoanId";
+            var loan = await _connection.QueryFirstOrDefaultAsync<Loan>(sqlLoan, new { LoanId = loanID });
 
+            return loan;
+        }
 
+        // Effective interest rate calculuations
+        private async Task<double> CalculateAverageMonthlyMiscCost(int loanId)
+        {
+            // Retrieve all misc costs for the given loan, rename 'frequency' to 'FrequencyMonths'
+            var sql = "SELECT Cost, frequency AS FrequencyMonths FROM misccost WHERE loanID = @LoanId";
+            var miscCosts = await _connection.QueryAsync<MiscCost>(sql, new { LoanId = loanId });
+
+            // Calculate the total cost and total frequency in months
+            double totalCost = 0;
+            if (miscCosts != null && miscCosts.Any())
+            {
+                foreach (var miscCost in miscCosts)
+                {
+                    totalCost += miscCost.Cost / miscCost.FrequencyMonths;
+                }
+            }
+
+            return totalCost;
+        }
+
+        public async Task<double> CalculateEffectiveInterestRate(int loanID)
+        {
+            Loan loan = await RetrieveLoanFromLoanID(loanID);
+            double extraCost = await CalculateAverageMonthlyMiscCost(loan.Id);
+            int loanTermInMonths = (loan.EndDate.Year - loan.StartDate.Year) * 12 + loan.EndDate.Month - loan.StartDate.Month;
+            double annualInterestRate = loan.InterestRate;
+            double downPayment = loan.DownPayment;
+            double loanAmount = loan.LoanAmount;
+
+            double monthlyInterestRate = 1 + (annualInterestRate / 12);
+            double monthlyPayment;
+            if (monthlyInterestRate == 1)
+                monthlyPayment = loanAmount / loanTermInMonths;
+            else
+                monthlyPayment = loanAmount / (CalculateGeometricSeries(1 / monthlyInterestRate, loanTermInMonths) * (1 / monthlyInterestRate));
+            double totalCost = monthlyPayment + extraCost;
+            double totalRepayment = totalCost * loanTermInMonths + downPayment;
+
+            List<double> cashFlows = new List<double>();
+            cashFlows.Add(loanAmount);
+            cashFlows.Add(-downPayment);
+
+            for (int i = 0; i < loanTermInMonths; i++)
+            {
+                cashFlows.Add(-totalCost);
+            }
+
+            double effectiveInterestRate = BinarySearchForInterestRate(cashFlows, loanTermInMonths) * 100;
+
+            return effectiveInterestRate;
+        }
+
+        private double CalculateGeometricSeries(double ratio, int terms)
+        {
+            double geometricSeriesSum = 1;
+
+            for (int i = 0; i < terms; i++)
+            {
+                geometricSeriesSum *= ratio;
+            }
+
+            geometricSeriesSum -= 1;
+            geometricSeriesSum /= ratio - 1;
+            return geometricSeriesSum;
+        }
+
+        private double CalculateNetPresentValue(List<double> cashFlows, double discountRate, int loanTermInMonths)
+        {
+            double discountFactor = Math.Pow((1 + discountRate), -((double)1 / 12));
+            double netPresentValue = Math.Pow(discountFactor, loanTermInMonths + 1) - 1;
+            netPresentValue /= (discountFactor - 1);
+            netPresentValue *= cashFlows[2];
+            netPresentValue -= cashFlows[2];
+            netPresentValue += cashFlows[0];
+            netPresentValue += cashFlows[1];
+
+            return netPresentValue;
+        }
+
+        private double BinarySearchForInterestRate(List<double> cashFlows, int loanTermInMonths)
+        {
+            double lowerBound = 0;
+            double upperBound = 100;
+
+            for (int i = 0; i < 30; i++)
+            {
+                double midPoint = (lowerBound + upperBound) / 2;
+                double netPresentValue = CalculateNetPresentValue(cashFlows, midPoint, loanTermInMonths);
+                if (Math.Abs(netPresentValue) < 1e-9)
+                    return midPoint;
+                if (netPresentValue > 0)
+                {
+                    upperBound = midPoint;
+                }
+                else
+                {
+                    lowerBound = midPoint;
+                }
+
+            }
+            return lowerBound;
+        }
     }
-
 }
+

@@ -168,6 +168,22 @@ namespace AmortizationCalculator.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+        [HttpPost("CalculateEffectiveInterestRate")]
+        public async Task<ActionResult<double>> CalculateEffectiveInterestRateAsync([FromBody] int loanID)
+        {
+            try
+            {
+                double effectiveInterestRate = await _paymentService.CalculateEffectiveInterestRate(loanID);
+                return Ok(effectiveInterestRate);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception message
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
     }
 
 }

@@ -4,6 +4,7 @@ export class Payment {
     principal: number;
     amountLeft: number;
     monthlyPayment: number;
+
   
     constructor(loanMonth: string, interest: number, principal: number, amountLeft: number, monthlyPayment: number) {
       this.loanMonth = loanMonth;
@@ -12,5 +13,6 @@ export class Payment {
       this.amountLeft = amountLeft;
       this.monthlyPayment = monthlyPayment;
     }
+
   }
   

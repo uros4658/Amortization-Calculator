@@ -5,8 +5,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import html2canvas from 'html2canvas';
 import * as pdfMake from 'pdfmake/build/pdfmake';
-
-
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 
 @Injectable({
   providedIn: 'root'
@@ -41,5 +40,9 @@ export class ShowDataService {
   missMonthsPaymentExtendLength(LoanID: number, loanMonth: Date, PayAmount: number): Observable<any> {
     const url = `${this.paymentApiUrl}/Missed-payment-Extend-length`;
     return this.http.post<any>(url, { LoanID, loanMonth, PayAmount });
+  }
+  calculateEffectiveInterestRate(loanID: number): Observable<any> {
+    const url = `${this.paymentApiUrl}/CalculateEffectiveInterestRate`;
+    return this.http.post<any>(url, loanID);
   }
 }

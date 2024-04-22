@@ -15,5 +15,6 @@ namespace AmortizationCalculator.Interfaces
         Task<Payment> CreatePaymentFromNewPayment(NewPayment newPayment);
         Task<Payment> AddMiscCost(Payment payment, MiscCost misccost);
         Task<MiscCost[]> GetMisc(int LoanID);
+        Task<double> CalculateEffectiveInterestRate(int loanID);
     }
 }
