@@ -1,4 +1,7 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# Dont ignore logs 
+!src/app/logs
 
 # Compiled output
 /dist
@@ -10,6 +13,8 @@
 /node_modules
 npm-debug.log
 yarn-error.log
+
+src/environments
 
 # IDEs and editors
 .idea/
